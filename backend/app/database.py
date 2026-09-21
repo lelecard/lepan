@@ -25,4 +25,17 @@ SessionLocal = sessionmaker(
 
 
 Base = declarative_base()
-from models import User
+
+
+
+def get_db():
+
+    db = SessionLocal()
+
+    try:
+
+        yield db
+
+    finally:
+
+        db.close()
