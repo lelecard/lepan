@@ -1,3 +1,9 @@
+from database import Base
+from database import engine
+
+from models import User
+
+
 from fastapi import FastAPI
 from api import users
 
@@ -8,6 +14,10 @@ app = FastAPI(
 
     title="LePan API",
     version="1.0.0"
+)
+
+Base.metadata.create_all(
+    bind=engine
 )
 
 
