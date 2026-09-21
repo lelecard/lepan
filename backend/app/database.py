@@ -25,3 +25,4 @@ SessionLocal = sessionmaker(
 
 
 Base = declarative_base()
+from models import User
