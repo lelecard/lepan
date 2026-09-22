@@ -1,0 +1,58 @@
+services:
+
+
+  postgres:
+
+    image: postgres:16
+
+    container_name: lepan-postgres
+
+
+    environment:
+
+      POSTGRES_USER: lepan
+
+      POSTGRES_PASSWORD: lepan_password
+
+      POSTGRES_DB: lepan
+
+
+    ports:
+
+      - "5432:5432"
+
+
+
+  redis:
+
+    image: redis:7
+
+    container_name: lepan-redis
+
+
+    ports:
+
+      - "6379:6379"
+
+
+
+  backend:
+
+    build:
+
+      context: ./backend
+
+
+    container_name: lepan-api
+
+
+    ports:
+
+      - "8000:8000"
+
+
+    depends_on:
+
+      - postgres
+
+      - redis
